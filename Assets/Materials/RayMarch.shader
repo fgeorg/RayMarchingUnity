@@ -21,6 +21,7 @@ Shader "RayMarch"
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
+            #include "Lighting.cginc" // for _LightColor0
 
             struct appdata
             {
@@ -45,11 +46,9 @@ Shader "RayMarch"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.ro = _WorldSpaceCameraPos;
+                // everything in object space
                 o.ro = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 1));
-                o.hitPos = mul(unity_ObjectToWorld, v.vertex);
                 o.hitPos = v.vertex;
-
                 return o;
             }
 
@@ -89,9 +88,17 @@ Shader "RayMarch"
             }
 
             float3 GetLighting (float3 pos) {
-                float3 lightDir = normalize(float3(-84.3400146, 124.7201937, 92.0409749));
-                float3 localLightDir = mul(unity_WorldToObject, float4(lightDir, 0));
-                return (dot(GetNormal(pos), localLightDir) + .2)/1.5;
+                
+                float3 col;
+                half3 worldNormal = UnityObjectToWorldNormal(GetNormal(pos));
+                half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
+                col = nl;// * unity_LightColor[0];
+                col += ShadeSH9(half4(worldNormal,1));
+                return col;
+
+                //float3 lightDir = normalize(float3(-84.3400146, 124.7201937, 92.0409749));
+                //float3 localLightDir = mul(unity_WorldToObject, float4(lightDir, 0));
+                //return (dot(GetNormal(pos), localLightDir) + .2)/1.5;
             }
 
             void frag (v2f i, out float4 color:COLOR, out float depth : DEPTH)
