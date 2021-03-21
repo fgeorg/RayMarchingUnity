@@ -5,7 +5,7 @@ Shader "RayMarchScene"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _SMinKValue ("SMinKValue", Range(0,5)) = 0.3
+        _SMinKValue ("SMinKValue", Range(0,8)) = 0.3
     }
     SubShader
     {
@@ -57,10 +57,30 @@ Shader "RayMarchScene"
                 return o;
             }
 
+            // https://www.iquilezles.org/www/articles/smin/smin.htm
+
+            float SMinPoly( float a, float b, float k )
+            {
+                float h = max( k-abs(a-b), 0.0 )/k;
+                return min( a, b ) - h*h*k*(1.0/4.0);
+            }
+
             float SMinCubic( float a, float b, float k )
             {
                 float h = max( k-abs(a-b), 0.0 )/k;
                 return min( a, b ) - h*h*h*k*(1.0/6.0);
+            }
+
+            float SMinExp( float a, float b, float k )
+            {
+                float res = exp2( -k*a ) + exp2( -k*b );
+                return -log2( res )/k;
+            }
+
+            float SMinPow( float a, float b, float k )
+            {
+                a = pow( a, k ); b = pow( b, k );
+                return pow( (a*b)/(a+b), 1.0/k );
             }
 
             float GetDistToSphere(float3 p) {
@@ -138,7 +158,7 @@ Shader "RayMarchScene"
                 col.rgb = GetLighting(p, worldNormal);
                 col.b += rm.y/2;
                 // if (col.g < 0) {
-                //     col.g *= -.1;
+                    //     col.g *= -.1;
                 // }
                 col.rgb += worldNormal * 0.3;
 
