@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785420950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.537, y: 2.531, z: 1.189}
+  m_LocalPosition: {x: 3.458, y: 2.531, z: 1.189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1123,7 +1123,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _CoarseThresh: 0.01
+    - _CoarseThresh: 0.013
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -1135,12 +1135,12 @@ Material:
     - _GlossyReflections: 0
     - _MarchMode: 0
     - _MaxDist: 100
-    - _MaxSteps: 65
+    - _MaxSteps: 30
     - _Metallic: 0
     - _NormalDist: 0.001
     - _OcclusionStrength: 1
-    - _Omega: 1.1
-    - _OvershootEps: 0.102
+    - _Omega: 1.064
+    - _OvershootEps: 0.164
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
