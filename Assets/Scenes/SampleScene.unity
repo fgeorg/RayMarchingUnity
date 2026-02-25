@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502643, g: 0.37139344, b: 0.49601033, a: 1}
+  m_IndirectSpecularColor: {r: 0.2834113, g: 0.369859, b: 0.5010854, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -401,13 +401,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413707512}
-  m_LocalRotation: {x: 0.20965452, y: 0.5596028, z: 0.08633349, w: -0.79714257}
-  m_LocalPosition: {x: 2.059, y: 1.639, z: 0.833}
+  m_LocalRotation: {x: 0.21052285, y: 0.5514519, z: 0.08419289, w: -0.8028029}
+  m_LocalPosition: {x: 1.962, y: 2.003, z: 0.832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -25.523, y: -1151.538, z: 6.171}
+  m_LocalEulerAnglesHint: {x: -25.523, y: -1150.37, z: 6.171}
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785420950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.454, y: 2.531, z: 1.123}
+  m_LocalPosition: {x: 3.537, y: 2.531, z: 1.189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -810,7 +810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675719820}
   m_LocalRotation: {x: 0.410263, y: 0.2869707, z: -0.23273163, w: -0.8337675}
-  m_LocalPosition: {x: 0.69, y: 1.545, z: 1.094}
+  m_LocalPosition: {x: 0.921, y: 1.391, z: 0.843}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1047,11 +1047,11 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: RayMarchScene (Instance) (Instance)
   m_Shader: {fileID: 4800000, guid: dcb5f957c5ea7db42ba0593885ccd901, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _BACKFACECULLMODE_ALPHA _MARCHMODE_BISECTION _MARCHMODE_SIMPLE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 4000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -1115,10 +1115,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _BackfaceCullMax: 0.8
+    - _BackfaceCullMin: 0.1
+    - _BackfaceCullMode: 1
+    - _BackfaceCullThreshold: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CoarseThresh: 0.01
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -1128,17 +1133,26 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MarchMode: 0
+    - _MaxDist: 100
+    - _MaxSteps: 65
     - _Metallic: 0
+    - _NormalDist: 0.001
     - _OcclusionStrength: 1
+    - _Omega: 1.1
+    - _OvershootEps: 0.102
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SMinKValue: 1.373
+    - _SMinKValue: 0.64
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StepFactor: 1
+    - _SurfDist: 0.0001
     - _Surface: 0
+    - _UseEnhancedMarching: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -1165,7 +1179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2110478777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1223,7 +1237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110478776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.202, y: 0.775, z: 1.334}
+  m_LocalPosition: {x: 2.202, y: 1.21, z: 1.334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1303,7 +1317,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 5.510497e-36, z: 4.5904e-41, w: -3.8250637}
+  m_BoundingSphereOverride: {x: 1.3555912e-19, y: 3.0312757e+32, z: 7.778281e+31, w: 1.5443738e+19}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1315,10 +1329,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138677391}
-  m_LocalRotation: {x: 0.7060721, y: 0.5263077, z: -0.03823945, w: 0.47222897}
+  m_LocalRotation: {x: -0.6945751, y: -0.45826158, z: 0.13253509, w: -0.538513}
   m_LocalPosition: {x: 0.24, y: 3, z: 4.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 45, y: 141.2, z: 90}
+  m_LocalEulerAnglesHint: {x: -299.594, y: 141.2, z: 90}
