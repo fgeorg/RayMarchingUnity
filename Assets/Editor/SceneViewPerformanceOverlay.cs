@@ -50,15 +50,15 @@ public static class SceneViewPerformanceOverlay
 
         Handles.BeginGUI();
 
-        EditorGUI.DrawRect(new Rect(10, 10, 150, 65), new Color(0, 0, 0, 0.7f));
+        EditorGUI.DrawRect(new Rect(50, 10, 150, 65), new Color(0, 0, 0, 0.7f));
 
         GUIStyle style = new GUIStyle(EditorStyles.boldLabel);
         style.normal.textColor = Color.green;
-        GUI.Label(new Rect(15, 15, 140, 20), $"FPS: {displayFps:F0}", style);
+        GUI.Label(new Rect(55, 15, 140, 20), $"FPS: {displayFps:F0}", style);
 
         style.normal.textColor = Color.white;
-        GUI.Label(new Rect(15, 35, 140, 20), $"CPU: {displayCpuMs:F2} ms", style);
-        GUI.Label(new Rect(15, 55, 140, 20), $"GPU: {displayGpuMs:F2} ms", style);
+        GUI.Label(new Rect(55, 35, 140, 20), $"CPU: {displayCpuMs:F2} ms", style);
+        GUI.Label(new Rect(55, 55, 140, 20), $"GPU: {displayGpuMs:F2} ms", style);
 
         Handles.EndGUI();
 
